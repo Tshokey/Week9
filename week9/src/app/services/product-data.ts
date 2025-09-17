@@ -24,10 +24,10 @@ export class ProductData {
   }
 
   update(product:Product){
-    return this.http.post<any>('http://localhst:3000/api/update', product);
+    return this.http.post<any>('http://localhost:3000/api/update', product);
   }
 
-  delete(productID){
+  delete(productID: number){
     return this.http.post<any>('http://locahost:3000/api/delete', {'productid': productID});
   }
 }

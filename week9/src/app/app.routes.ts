@@ -13,7 +13,7 @@ export const routes: Routes = [
         component: AddProduct
     },
     {
-        path: 'update',
+        path: 'update/:id',
         component: Update
     }
 ];

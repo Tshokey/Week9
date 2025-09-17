@@ -36,7 +36,7 @@ export class AddProduct implements OnInit {
     if(this.productid == null){
       this.iderrorshow = !this.iderrorshow;
     }else{""
-      this.newprod = new Product("", this.productid, this.productname, this.productdesc, this.productprice, this.productunits);
+      this.newprod = {id: this.productid,name: this.productname,description: this.productdesc,price: this.productprice,units: this.productunits};
       this.proddata.add(this.newprod).subscribe((data)=>{
         console.log(data);
         this.noticeshow = true;

@@ -1,6 +1,6 @@
 module.exports = function(db,app,ObjectID){
     app.post('/api/delete', function(req,res){
-        if(!req,body){
+        if(!req.body){
             return res.sendStatus(400);
         }
         productID = req.body.productID;

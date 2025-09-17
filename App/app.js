@@ -9,7 +9,12 @@ async function main() {
     const db = client.db(dbName);
     const collection = db.collection('products');
 
-    await collection.drop();
-}
+    await collection.drop().catch(()=> console.log("No table to drop"));
 
-main()
+    require('./add')(db);
+    require('./read')(db);
+    require('./update')(db);
+    require('./remove')(db);
+}   
+
+main();

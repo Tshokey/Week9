@@ -12,12 +12,12 @@ app.use(bodyParser.json());
 
 async function main() {
     await client.connect();
-    const db = client.db(dbName);
+    const db = client.db('mydb');
     const collection = db.collection('products');
     require('./routes/add.js')(db,app);
     require('./routes/read.js')(db,app);
     require('./routes/update.js')(db,app,ObjectID);
-    require('./routes/delete.js')(db,app,ObjectID);
+    require('./routes/remove.js')(db,app,ObjectID);
 }
 main();
 app.listen(3000, () => console.log("Server on http://localhost:3000"));
