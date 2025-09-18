@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductData, Product} from '../../services/product-data';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product-list',
-  imports: [],
+  imports: [CommonModule, RouterLink],
   templateUrl: './product-list.html',
   styleUrls: ['./product-list.css']
 })
@@ -18,7 +19,7 @@ export class ProductList implements OnInit{
     
   }
 
-  delete(id){
+  delete(id: number){
     if(confirm("Are you sure you want to delete this item")){
       this.proddata.delete(id).subscribe((data)=>{
         this.products =data;

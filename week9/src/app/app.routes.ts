@@ -5,6 +5,10 @@ import { Update } from './components/update/update';
 
 export const routes: Routes = [
     {
+        path:'',
+        component: ProductList
+    },
+    {
         path:'product',
         component: ProductList
     },
@@ -13,7 +17,8 @@ export const routes: Routes = [
         component: AddProduct
     },
     {
-        path: 'update/:id',
+        path: 'update',
         component: Update
     }
+
 ];
