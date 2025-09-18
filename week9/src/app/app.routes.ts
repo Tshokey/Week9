@@ -17,6 +17,10 @@ export const routes: Routes = [
         component: AddProduct
     },
     {
+        path: 'update/:id',
+        component: Update
+    },
+    {
         path: 'update',
         component: Update
     }

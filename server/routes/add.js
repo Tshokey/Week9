@@ -1,22 +1,20 @@
-module.exports = function(db, app){
-    app.post('/api/add', function(req,res){
-        if(!req.body){
-            return res.sendStatus(400)
-        }
-        product = req.body;
-        const collection = db.collection('products');
+module.exports = function(db, app) {
+  app.post('/api/add', async function(req, res) {
+    if (!req.body) return res.sendStatus(400);
 
-        collection.find({'id': product.id}).count((err,count)=>{
-            if(count==0){
-                collection.insertOne(product,(err,dbres)=>{
-                    if(err) throw err;
+    const product = req.body;
+    const collection = db.collection('products');
 
-                    let num = dbres.insertedCount;
-                    res.send({'num':num, err:null});
-                })
-            }else{
-                res.send({num: 0,err:'duplicate item'});
-            }
-        });
-    });
-}
+    try {
+      const count = await collection.countDocuments({ id: product.id });
+      if (count === 0) {
+        const dbres = await collection.insertOne(product);
+        res.send({ num: dbres.insertedCount, err: null });
+      } else {
+        res.send({ num: 0, err: 'duplicate item' });
+      }
+    } catch (err) {
+      res.status(500).send({ num: 0, err: err.message });
+    }
+  });
+};

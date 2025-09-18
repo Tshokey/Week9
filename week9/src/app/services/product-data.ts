@@ -29,7 +29,7 @@ export class ProductData {
     return this.http.post(`${this.baseUrl}/update`, product);
   }
 
-  delete(productID: number): Observable<Product[]> {
+  delete(productID: string): Observable<Product[]> {
     return this.http.post<Product[]>(`${this.baseUrl}/delete`, { productid: productID });
   }
 }

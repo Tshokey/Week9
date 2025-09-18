@@ -3,7 +3,7 @@
         <div class="form-group">
             <label for="productid">Product ID</label>
             <input type="number" class="form-control" id="productid" [(ngModel)]="productid" name="productid">
-            <div *ngIf="iderrorshow" [@iderrorState]="stateName" class="alert alert-warning" id="iderrormsg" rule="aler">{{iderrormsg}} {{iderrormsg2}}</div>
+            <div *ngIf="iderrorshow" class="alert alert-warning" >Invalid ID</div>
         </div>
         <div class="form-group">
             <label for="productid">Product Name</label>

@@ -11,10 +11,10 @@ async function main() {
 
     await collection.drop().catch(()=> console.log("No table to drop"));
 
-    require('./add')(db);
-    require('./read')(db);
-    require('./update')(db);
-    require('./remove')(db);
+    await require('./add')(db);
+    await require('./read')(db);
+    await require('./update')(db);
+    await require('./remove')(db);
 }   
 
 main();

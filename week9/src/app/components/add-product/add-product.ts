@@ -20,16 +20,10 @@ export class AddProduct {
 
   newprod!: Product;  
   newProductMessage = '';
-  iderrormsg = 'This id already exists $ New ID is required';
-  iderrormsg2 = '';
   iderrorshow = false;
   noticeshow = false;
 
   constructor(private proddata: ProductData, private router: Router) {}
-
-  get stateName() {
-    return this.iderrorshow;
-  }
 
   get noticeName() {
     return this.noticeshow;
@@ -53,20 +47,22 @@ export class AddProduct {
       units: this.productunits,
     };
 
-    this.proddata.add(this.newprod).subscribe((data) => {
+    this.proddata.add(this.newprod).subscribe({ next: (data: any) => {
       this.noticeshow = true;
       if (!data.err) {
         this.newProductMessage =
-          data.num + ' new product (' + this.productname + ') was added';
+          ' New product (' + this.productname + ') was added';
+
+        this.productid = 0;
+        this.productname = '';
+        this.productdesc = '';
+        this.productprice = 0;
+        this.productunits = 0;
+
       } else {
         this.newProductMessage = data.err;
       }
-
-      this.productid = 0;
-      this.productname = '';
-      this.productdesc = '';
-      this.productprice = 0;
-      this.productunits = 0;
-    });
-  }
+    },
+  });
+}
 }
